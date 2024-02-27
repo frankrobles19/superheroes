@@ -1,0 +1,65 @@
+const cuerpo = document.querySelector('contenedor-personajes')
+marvel.forEach((item) => {
+    const caracter = document.createElement("personaje")
+    const foto = document.createElement("foto")
+    const contenido = document.createElement("DIV")
+    const titulo = document.createElement("h2")
+    const boton = document.createElement("boton")
+
+    // Asignar clases
+    caracter.classList.add('caracter')
+    foto.classList.add('imagen')
+    contenido.classList.add('contenido')
+    titulo.classList.add('nombrePersonaje')
+    boton.classList.add('ver')
+    foto.src = item.picture
+    titulo.textContent = item.name
+
+    // Anidar elementos
+    caracter.appendChild(foto)
+    caracter.appendChild(contenido)
+    contenido.appendChild(titulo)
+    contenido.appendChild(boton)
+    cuerpo.appendChild(caracter)
+})
+
+// Obtén el contenedor donde se añadirán los personajes
+let contenedor = document.getElementById('padre');
+
+// Recorre el array de personajes
+marvel.forEach(personaje => {
+    // Crea un nuevo div para el personaje
+    let divPersonaje = document.createElement('div');
+    divPersonaje.className = 'personaje';
+    divPersonaje.id = personaje.id;
+
+    // Crea un div para la foto
+    let divFoto = document.createElement('div');
+    divFoto.className = 'foto';
+
+    // Crea la imagen y añade el src
+    let img = document.createElement('img');
+    img.src = personaje.picture;
+    img.className = 'foto-1';
+
+    // Añade la imagen al div de la foto
+    divFoto.appendChild(img);
+
+    // Crea el elemento h2 y añade el nombre del personaje
+    let h2 = document.createElement('h2');
+    h2.className = 'h2';
+    h2.textContent = personaje.name;
+
+    // Crea el botón
+    let boton = document.createElement('button');
+    boton.className = 'boton';
+    boton.textContent = 'ver';
+
+    // Añade todos los elementos al div del personaje
+    divPersonaje.appendChild(divFoto);
+    divPersonaje.appendChild(h2);
+    divPersonaje.appendChild(boton);
+
+    // Añade el personaje al contenedor
+    contenedor.appendChild(divPersonaje);
+});
