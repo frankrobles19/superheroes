@@ -242,19 +242,17 @@ function crearPersonajes(personajes, contenedor) {
 crearPersonajes(personajesMarvel, contenedorMarvel);
 crearPersonajes(personajesDC, contenedorDC);
 
-function filtrarPersonajes(terminoBusqueda, arrayMarvel, arrayDC) {
-    let resultadosMarvel = arrayMarvel.filter(personaje => personaje.name.toLowerCase().includes(terminoBusqueda.toLowerCase()));
-    let resultadosDC = arrayDC.filter(personaje => personaje.name.toLowerCase().includes(terminoBusqueda.toLowerCase()));
+function searchCharacter() {
+    var input = document.getElementById('searchInput').value;
+    input = input.toLowerCase();
+    var x = document.getElementsByClassName('personaje');
 
-    return {
-        resultadosMarvel,
-        resultadosDC
-    };
+    for (i = 0; i < x.length; i++) { 
+        if (!x[i].innerHTML.toLowerCase().includes(input)) {
+            x[i].style.display="none";
+        }
+        else {
+            x[i].style.display="list-item";                 
+        }
+    }
 }
-
-document.getElementById('search').addEventListener('input', function() {
-    let terminoBusqueda = this.value;
-    let resultados = filtrarPersonajes(terminoBusqueda, personajesMarvel, personajesDC);
-    document.getElementById('results').innerHTML = JSON.stringify(resultados, null, 2);
-});
-
